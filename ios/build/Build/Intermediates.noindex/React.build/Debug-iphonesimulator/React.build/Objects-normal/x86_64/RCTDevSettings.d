@@ -1,0 +1,23 @@
+dependencies: \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/node_modules/react-native/React/Modules/RCTDevSettings.mm \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/node_modules/react-native/React/Modules/RCTDevSettings.h \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/node_modules/react-native/React/Base/RCTInvalidating.h \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/ios/build/Build/Products/Debug-iphonesimulator/include/jschelpers/JavaScriptCore.h \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/ios/build/Build/Products/Debug-iphonesimulator/include/jschelpers/JSCWrapper.h \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/node_modules/react-native/React/Base/RCTBridge+Private.h \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/node_modules/react-native/React/Base/RCTEventDispatcher.h \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/node_modules/react-native/React/Modules/RCTJSCSamplingProfiler.h \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/node_modules/react-native/React/Base/RCTLog.h \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/node_modules/react-native/React/Base/RCTUtils.h \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/node_modules/react-native/React/Profiler/RCTProfile.h \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/node_modules/react-native/React/DevSupport/RCTPackagerClient.h \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/node_modules/react-native/React/DevSupport/RCTPackagerConnection.h \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/node_modules/react-native/React/DevSupport/RCTInspectorDevServerHelper.h \
+  /Users/gabriel/Desktop/programming/git-hub/jack-jack/node_modules/react-native/React/Inspector/RCTInspectorPackagerConnection.h
