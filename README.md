@@ -9,7 +9,7 @@
 $ react-native init {project name}
 ```
 
-Have two way to run app, one is open the project in Xcode (for ios) or Android Studio (for Android), other way is open this page and look how configure the cli to use this commands. 
+Have two way to run app, one is open the project in Xcode (for ios) or Android Studio (for Android). Other way is open this page: https://facebook.github.io/react-native/docs/getting-started.html and look how configure the cli to use this command:
 
 ## RUN IOS
 ```sh
