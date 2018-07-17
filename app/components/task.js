@@ -2,7 +2,7 @@
 import React, { Component} from 'react';
 import { View, TouchableOpacity, StyleSheet, Text, Button, Alert } from 'react-native';
 // INTERNAL
-import Rating from './rating';
+import Rating from './Rating';
 // STYLES
 const styles = StyleSheet.create({
     content: {
@@ -42,14 +42,13 @@ export default class Task extends Component {
             <TouchableOpacity 
                 onPress={this.open_task}
                 style={styles.content}
-                onPress={this.open_task}
             >
                 <View style={{ flex: 5, ...styles.columns }}>
                     <Text style={styles.title}>{title}</Text>
                     <Rating 
                         value={ratValue} 
-                        type="circle" 
-                        // enabled
+                        type="circle"
+                        // onChangeRating={() => {}}
                         // activedStyle={{
                         //     backgroundColor: 'blue'
                         // }}

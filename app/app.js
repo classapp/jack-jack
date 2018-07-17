@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, ScrollView, FlatList, Button, Alert } from 'react-native';
 // INTERNAL
-import Task from './components/task';
+import Task from './components/Task';
 // STYLES
 const styles = StyleSheet.create({
   container: {

@@ -29,8 +29,8 @@ export default class Rating extends Component {
 
     /// METHOD WHEN IS SELECTED A NEW VALUO OF RATING
     onChangeRating = (value) => {
-        if( this.props.enabled && (this.props.callback != (undefined && null)) ){
-            this.props.callback(value);
+        if( this.props.callback != (undefined && null) ){
+            this.props.onChangeRating(value);
         }        
     }
 
@@ -57,7 +57,7 @@ export default class Rating extends Component {
     }
 
     render() {
-        const { value, enabled, type, activedStyle, disabledStyle, callback } = this.props;
+        const { value, type, activedStyle, disabledStyle, onChangeRating } = this.props;
 
         return (
             <View style={{flex: 1, paddingTop: 5, flexDirection: 'row'}}>
