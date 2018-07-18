@@ -52,7 +52,6 @@ export default class Rating extends Component {
                 return (<TouchableOpacity onPress={() => this.onChangeRating(i + 1)} style={ value === 1 ? [styles.button, styles.actived ,this.props.activedStyle] : [styles.button, styles.disabled ,this.props.disabledStyle]}></TouchableOpacity>);
             });
         }else if(this.props.type == 'star'){
-
         }
     }
 
