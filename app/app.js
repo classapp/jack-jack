@@ -7,6 +7,7 @@ import Task from './components/Task';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#ffffff',
     padding: 0,
     paddingTop: 20
   },
@@ -20,7 +21,8 @@ const styles = StyleSheet.create({
     flex: 1,  
     justifyContent : 'center',
     alignItems: 'center',
-    backgroundColor: '#eeeeee',
+    flexDirection: 'row',
+    backgroundColor: '#ffffff',
     shadowColor: '#000000',
     shadowOffset: {
       width: 0,
@@ -58,7 +60,8 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
           <View style={styles.topBar}>
-            <Text style={styles.title} onPress={this.new_task}>Nova Tarefa +</Text>
+            <Text style={{flex: 6, ...styles.title}} >Minhas Tarefas</Text>
+            <Text style={{flex: 1, ...styles.title}} onPress={this.new_task}>+</Text>
           </View>
           <View style={styles.list}>  
             <ScrollView>
