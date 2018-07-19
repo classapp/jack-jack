@@ -79,11 +79,9 @@ export default class NewTask extends Component{
                         <View style={{margin: 4}}>
                             <Text>Titulo</Text>
                             <TextInput
-                                multiline={true}
-                                numberOfLines={4}
                                 placeholder="Titulo"
                                 style={{...styles.textInput}}
-                                onChangeText={(text) => this.setState({title})}
+                                onChangeText={(text) => this.setState({title: text})}
                                 value={this.state.title}
                             />
                         </View>
@@ -91,10 +89,9 @@ export default class NewTask extends Component{
                             <Text>Descrição</Text>
                             <TextInput
                                 multiline={true}
-                                numberOfLines={4}
                                 placeholder="Descrição"
                                 style={{flex: 4, ...styles.textInput}}
-                                onChangeText={(text) => this.setState({text})}
+                                onChangeText={(text) => this.setState({text: text})}
                                 value={this.state.text}
                             />
                         </View>
