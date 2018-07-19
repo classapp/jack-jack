@@ -2,7 +2,7 @@
 
 <img src="http://www.nishiweb.com.br/icomics/images/upload/368.jpg" alt="JACK-JACK" width="240" height="330">
 </br>
-<p>App created to teach people how work with React-Native. This step you have one exemple to how create your components and import in your code. We created two components, 'rating' and 'task' who will be used in the first page to load my tasks.</p>
+<p>App created to teach people how work with React-Native. This step you will learn how navigate and open another pages in your application. To do this we use react-navigation who is a stack/component for manage our pages.</p>
 
 ## CREATE PROJECT
 ```sh
