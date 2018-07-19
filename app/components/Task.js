@@ -1,6 +1,6 @@
 // EXTERNAL
 import React, { Component} from 'react';
-import { View, TouchableOpacity, StyleSheet, Text, Alert } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Text } from 'react-native';
 // INTERNAL
 import Rating from './Rating';
 // STYLES
@@ -31,23 +31,23 @@ export default class Task extends Component {
     }
 
     open_task = () => {
-        Alert.alert("Mensagem !", "Deseja abrir esta tarefa ?", [
-            {text: 'Yes', onPress: () => console.log('Yes Pressed')}
-        ]);
+        this.props.navigation.navigate('TaskDetails', this.props.data);
     }
 
     render() {
-        const { title, desc, ratValue } = this.props;
+        const { data } = this.props;
+       
         return (
             <TouchableOpacity 
                 onPress={this.open_task}
                 style={styles.content}
             >
                 <View style={{ flex: 5, ...styles.columns }}>
-                    <Text style={styles.title}>{title}</Text>
+                    <Text style={styles.title}>{data.title}</Text>
                     <Rating 
-                        value={ratValue} 
+                        value={data.rating} 
                         type="circle"
+                        small
                         // onChangeRating={() => {}}
                         // activedStyle={{
                         //     backgroundColor: 'blue'

@@ -4,9 +4,19 @@ import { View, TouchableOpacity, StyleSheet, Text, Alert } from 'react-native';
 
 // STYLES
 const styles = StyleSheet.create({
-    button: {
+    small: {
         width: 20,
         height: 20,
+    },
+    medium: {
+        width: 30,
+        height: 30,
+    },
+    big: {
+        width: 40,
+        height: 40,
+    },
+    dots: {
         marginRight: 3,
         flexDirection: 'column',
         borderRadius: 100,
@@ -25,11 +35,14 @@ export default class Rating extends Component {
 
     constructor(props){
         super(props);
+        this.state = {
+            value: props.value
+        }
     }
 
     /// METHOD WHEN IS SELECTED A NEW VALUO OF RATING
     onChangeRating = (value) => {
-        if( this.props.callback != (undefined && null) ){
+        if( this.props.hasOwnProperty('onChangeRating')){
             this.props.onChangeRating(value);
         }        
     }
@@ -49,15 +62,17 @@ export default class Rating extends Component {
             }
 
             return result.map((value, i) => {
-                return (<TouchableOpacity onPress={() => this.onChangeRating(i + 1)} style={ value === 1 ? [styles.button, styles.actived ,this.props.activedStyle] : [styles.button, styles.disabled ,this.props.disabledStyle]}></TouchableOpacity>);
+                return (<TouchableOpacity
+                    key={i}
+                    onPress={() => this.onChangeRating(i + 1)} 
+                    style={[styles.dots, styles.disabled, (this.props.small ? styles.small : undefined), (this.props.medium ? styles.medium : undefined), (this.props.big ? styles.big : undefined), value === 1 ? styles.actived : styles.disabled]}
+                    ></TouchableOpacity>);
             });
-        }else if(this.props.type == 'star'){
-
         }
     }
 
     render() {
-        const { value, type, activedStyle, disabledStyle, onChangeRating } = this.props;
+        const { value } = this.props;
 
         return (
             <View style={{flex: 1, paddingTop: 5, flexDirection: 'row'}}>
