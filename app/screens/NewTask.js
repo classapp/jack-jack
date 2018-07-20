@@ -12,7 +12,7 @@ const styles = {
         flex: 1,
         backgroundColor: '#ffffff',
         padding: 0,
-        paddingTop: 20
+        paddingTop: 5
       },
       topBar: {
         flex: 1,
@@ -37,6 +37,7 @@ const styles = {
         marginTop: 4,
         padding: 5,
         borderColor: 'gray',
+        textAlignVertical: "top",
         borderWidth: 1
       },
       title: {
@@ -67,12 +68,13 @@ export default class NewTask extends Component{
      }
 
     render() {
+    
         return (
             <View style={styles.container}>
                 <KeyboardAwareScrollView contentContainerStyle={{flex: 1}}>
                     <View style={styles.topBar}>
                         <Text style={{flex: 3, color: '#ff8724', ...styles.title}} onPress={() => this.props.navigation.goBack()}>Voltar</Text>
-                        <Text style={{flex: 6, color: '#ff8724', ...styles.title}} >Nova Tarefa</Text>
+                        <Text style={{flex: 6, color: '#000000', ...styles.title}} >Nova Tarefa</Text>
                         <Text style={{flex: 3, color: '#006bff', ...styles.title}} onPress={() => this.create_task()}>ADD</Text>
                     </View>
                     <View style={styles.forms}>
@@ -85,17 +87,18 @@ export default class NewTask extends Component{
                                 value={this.state.title}
                             />
                         </View>
-                        <View style={{flex: 4, margin: 4}}>
+                        <View style={{flex: 1, margin: 4}}>
                             <Text>Descrição</Text>
                             <TextInput
-                                multiline={true}
+                                multiline
+                                numberOfLines={10}
                                 placeholder="Descrição"
-                                style={{flex: 4, ...styles.textInput}}
+                                style={{flex: 1, minHeight: 80, ...styles.textInput}}
                                 onChangeText={(text) => this.setState({text: text})}
                                 value={this.state.text}
                             />
                         </View>
-                        <View style={{flex: 1, margin: 4 }}>
+                        <View style={{flex: 1, margin: 4}}>
                             <Text>Prioridade</Text>
                             <View style={{ alignItems: 'center'}}>
                                 <Rating
@@ -115,7 +118,6 @@ export default class NewTask extends Component{
                     </View>
                 </KeyboardAwareScrollView>
             </View>
-
             );
     }
 }

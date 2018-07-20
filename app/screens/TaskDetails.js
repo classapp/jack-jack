@@ -1,7 +1,6 @@
 // EXTERNAL
 import React, { Component } from 'react';
-import { View, Text, TextInput, Alert } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { View, Text, Alert, ScrollView } from 'react-native';
 
 // INTERNAL
 import Rating from '../components/Rating';
@@ -67,16 +66,16 @@ export default class TaskDetails extends Component{
     render() {
         return (
             <View style={styles.container}>
-                <KeyboardAwareScrollView contentContainerStyle={{flex: 1}}>
-                    <View style={styles.topBar}>
-                        <Text style={{flex: 3, color: '#ff8724', ...styles.title}} onPress={() => this.props.navigation.goBack()}>Voltar</Text>
-                        <Text style={{flex: 6, color: '#ff8724', ...styles.title}} >{this.state.title}</Text>
-                        <Text style={{flex: 4, color: '#006bff', ...styles.title}} onPress={() => this.delete_task()}>DELETE</Text>
-                    </View>
-                    <View style={styles.desc}>
+                <View style={styles.topBar}>
+                    <Text style={{flex: 3, color: '#ff8724', ...styles.title}} onPress={() => this.props.navigation.goBack()}>Voltar</Text>
+                    <Text style={{flex: 6, color: '#000000', ...styles.title}} >{this.state.title}</Text>
+                    <Text style={{flex: 4, color: '#006bff', ...styles.title}} onPress={() => this.delete_task()}>DELETE</Text>
+                </View>
+                <View style={styles.desc}>
+                    <ScrollView>
                         <View style={{margin: 4}}>
-                            <Text style={{ fontWeight: 'bold' }}>Conteúdo</Text>
-                            <Text style={{margin: 5}}>{this.state.text}</Text>
+                            <Text style={{ marginBottom: 5, fontWeight: 'bold' }}>Conteúdo</Text>
+                            <Text>{this.state.text}</Text>
                         </View>
                         <View style={{margin: 4}}>
                             <Text style={{ fontWeight: 'bold' }}>Prioridade</Text>
@@ -95,8 +94,8 @@ export default class TaskDetails extends Component{
                                 />
                             </View>
                         </View>
-                    </View>
-                </KeyboardAwareScrollView>
+                    </ScrollView>
+                </View>
             </View>
 
             );
