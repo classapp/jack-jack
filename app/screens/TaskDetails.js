@@ -5,6 +5,9 @@ import { View, Text, Alert, ScrollView } from 'react-native';
 // INTERNAL
 import Rating from '../components/Rating';
 
+//STORAGE
+import MyStorage from '../libs/Storage';
+
 // STYLES
 const styles = {
     container: {
@@ -56,10 +59,21 @@ export default class TaskDetails extends Component{
 
      }
 
-     delete_task = () => {
+    delete_task = () => {
          Alert.alert("Confirmação", "Deseja realmente deletar esta tarefa ?", [
-             {text: "Sim", onPress: () => {console.log('delete task')}},
-             {text: "Não", onPress: () => {console.log('cancel delete task')}}
+            {
+                text: "Sim", 
+                onPress: () => {
+                    console.log('Deleting task...');
+                    new MyStorage().delete(this.state.uid);
+                    this.props.navigation.goBack();
+                }
+            },
+            {
+                text: "Não", onPress: () => {
+                    console.log('Canceling deletation of task...');
+                }
+            }
          ]);
      }
 
@@ -96,8 +110,6 @@ export default class TaskDetails extends Component{
                         </View>
                     </ScrollView>
                 </View>
-            </View>
-
-            );
+            </View>);
     }
 }

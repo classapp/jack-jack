@@ -1,10 +1,13 @@
 // EXTERNAL
 import React, { Component } from 'react';
-import { View, Text, TextInput, Alert } from 'react-native';
+import { View, Text, TextInput, Alert, BackHandler } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 // INTERNAL
 import Rating from '../components/Rating';
+
+// STORAGE
+import MyStorage from '../libs/Storage';
 
 // STYLES
 const styles = {
@@ -51,19 +54,28 @@ const styles = {
 // SCREEN FOR CREATE NEW TASK
 export default class NewTask extends Component{
     
-     constructor(props){
+    constructor(props){
         super(props);
         this.state = { 
             title: "",
             text: "",
             rating: 3
-        }
-     }
-
+        };        
+    }
+    
      create_task = () => {
+         
+        // YOU CAN IMPLEMENTS VALIDATIONS
+
          Alert.alert("Confirmação", "Deseja realmente criar esta tarefa ?", [
-             {text: "Sim", onPress: () => {console.log('create task')}},
-             {text: "Não", onPress: () => {console.log('cancel create task')}}
+            {text: "Sim", onPress: () => {
+                console.log('Creating new task...');
+                new MyStorage().add(this.state);
+                this.props.navigation.goBack();
+            }},
+            {text: "Não", onPress: () => {
+                console.log('Canceling creation new task..');
+            }}
          ]);
      }
 
@@ -81,6 +93,7 @@ export default class NewTask extends Component{
                         <View style={{margin: 4}}>
                             <Text>Titulo</Text>
                             <TextInput
+                                maxLength={30}
                                 placeholder="Titulo"
                                 style={{...styles.textInput}}
                                 onChangeText={(text) => this.setState({title: text})}

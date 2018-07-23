@@ -1,8 +1,11 @@
 // EXTERNAL
-import React, {Component} from 'react';
-import { StyleSheet, Text, View, ScrollView, FlatList } from 'react-native';
+import React, { Component } from 'react';
+import {
+  StyleSheet, Text, View, ScrollView, FlatList
+} from 'react-native';
 // INTERNAL
 import Task from '../components/Task';
+import MyStorage from '../libs/Storage';
 
 // STYLES
 const styles = StyleSheet.create({
@@ -10,27 +13,27 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ffffff',
     padding: 0,
-    paddingTop: 20
+    paddingTop: 20,
   },
   list: {
     flex: 6,
     padding: 5,
     marginTop: 10,
-    backgroundColor: '#ffffff'
+    backgroundColor: '#ffffff',
   },
   topBar: {
-    flex: 1,  
-    justifyContent : 'center',
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
     backgroundColor: '#ffffff',
     shadowColor: '#000000',
     shadowOffset: {
       width: 0,
-      height: 2
+      height: 2,
     },
     shadowRadius: 1,
-    shadowOpacity: 0.5
+    shadowOpacity: 0.5,
 
   },
   title: {
@@ -39,35 +42,57 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#ff8724',
     margin: 10,
-  }
+  },
 });
 // INITIAL PAGE
 export default class Main extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
+
+    this.state = {
+      data: '',
+    };
   }
 
-  // FUNCTION TO CALL NEW PAGE 
+  // BEFORE RENDER METHOD
+  async componentWillMount() {
+    const storage = await new MyStorage().load();
+    this.setState({ data: storage });
+  }
+
+  // WHEN COMPONENT UPDATES DATA
+  async componentWillUpdate() {
+    const storage = await new MyStorage().load();
+    this.setState({ data: storage });
+  }
+
+  // FUNCTION TO CALL NEWTASK PAGE
   new_task = () => {
     this.props.navigation.navigate('NewTask');
-  } 
+  }
 
   render() {
     return (
       <View style={styles.container}>
-          <View style={styles.topBar}>
-            <Text style={{flex: 6, ...styles.title}} >Minhas Tarefas</Text>
-            <Text style={{flex: 1, ...styles.title}} onPress={this.new_task}>+</Text>
-          </View>
-          <View style={styles.list}> 
-            <ScrollView>
-              <FlatList
-                data={[{ uid: 1, title: 'Tarefa 1', text: 'Description Item 1' ,rating: 3}, {uid: 2, title: 'Tarefa 2', text: 'Description Item 2', rating: 4}]}
-                renderItem={({item}) => <Task key={item.uid} data={item} navigation={this.props.navigation} />}
-              />
-            </ScrollView>
-          </View>
+        <View style={styles.topBar}>
+          <Text style={{ flex: 6, ...styles.title }}>
+            Minhas Tarefas
+          </Text>
+          <Text style={{ flex: 1, ...styles.title }} onPress={this.new_task}>
+            +
+          </Text>
+        </View>
+        <View style={styles.list}>
+          <ScrollView>
+            <FlatList
+              ListEmptyComponent={(<View style={{ alignItems: 'center' }}>
+                <Text>Nenhuma tarefa para mostar.</Text>
+              </View>)}
+              data={this.state.data}
+              renderItem={({ item }) => <Task key={item.uid} data={item} navigation={this.props.navigation} />}
+            />
+          </ScrollView>
+        </View>
       </View>
     );
   }
