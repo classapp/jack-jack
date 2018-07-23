@@ -1,8 +1,10 @@
 // EXTERNAL
 import React, { Component} from 'react';
 import { View, TouchableOpacity, StyleSheet, Text } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 // INTERNAL
 import Rating from './Rating';
+
 // STYLES
 const styles = StyleSheet.create({
     content: {
@@ -46,19 +48,13 @@ export default class Task extends Component {
                     <Text style={styles.title}>{data.title}</Text>
                     <Rating 
                         value={data.rating} 
-                        type="circle"
+                        type="star"
                         small
-                        // onChangeRating={() => {}}
-                        // activedStyle={{
-                        //     backgroundColor: 'blue'
-                        // }}
-                        // disabledStyle={{
-                        //     backgroundColor: 'red'
-                        // }}
+                        color="#232323"
                     />
                 </View>
                 <View style={{ flex: 1, alignItems: 'center', ...styles.columns }}>
-                    <Text style={styles.title}>></Text>
+                    <Icon name="arrow-right" size={30} color="#13ce4f" />
                 </View>
             </TouchableOpacity>
         );

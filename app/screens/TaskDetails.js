@@ -50,7 +50,7 @@ export default class TaskDetails extends Component{
      constructor(props){
         super(props);
 
-        this.onComplete = props.navigation.getParam('onComplete');
+        this.onComplete = props.navigation.getParam('onComplete'); // CALLBACK FUNCTION TO UPDATE THE MAIN PAGE
 
         data = props.navigation.getParam('data');
         
@@ -70,7 +70,7 @@ export default class TaskDetails extends Component{
                 onPress: () => {
                     new MyStorage().delete(this.state.uid).then((data) => {
                         console.log('Deleting task...');
-                        this.onComplete(data);
+                        this.onComplete(data); // CALLBACK FUNCTION TO UPDATE THE MAIN PAGE
                         this.props.navigation.navigate('Main');
                     });
                 }
@@ -95,22 +95,16 @@ export default class TaskDetails extends Component{
                     <ScrollView>
                         <View style={{margin: 4}}>
                             <Text style={{ marginBottom: 5, fontWeight: 'bold' }}>Conteúdo</Text>
-                            <Text>{this.state.text}</Text>
+                            <Text style={{ fontSize: 28, color: '#666464' }}>{this.state.text}</Text>
                         </View>
                         <View style={{margin: 4}}>
                             <Text style={{ fontWeight: 'bold' }}>Prioridade</Text>
                             <View style={{ alignItems: 'center' }}>
                                 <Rating 
                                     value={this.state.rating} 
-                                    type="circle"
+                                    type="star"
                                     big
-                                    // onChangeRating={() => {}}
-                                    // activedStyle={{
-                                    //     backgroundColor: 'blue'
-                                    // }}
-                                    // disabledStyle={{
-                                    //     backgroundColor: 'red'
-                                    // }}
+                                    color="#232323"
                                 />
                             </View>
                         </View>

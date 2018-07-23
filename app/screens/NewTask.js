@@ -57,7 +57,7 @@ export default class NewTask extends Component{
     constructor(props){
         super(props);
         
-        this.onComplete = props.navigation.getParam('onComplete');
+        this.onComplete = props.navigation.getParam('onComplete'); // CALLBACK FUNCTION TO UPDATE THE MAIN PAGE
 
         this.state = { 
             title: "",
@@ -74,7 +74,7 @@ export default class NewTask extends Component{
             {text: "Sim", onPress: () => {
                 new MyStorage().add(this.state).then((newData) => {
                     console.log('Creating new task...');
-                    this.onComplete(newData);
+                    this.onComplete(newData); // CALLBACK FUNCTION TO UPDATE THE MAIN PAGE
                     this.props.navigation.navigate('Main');
                 }); 
             }},
@@ -123,14 +123,9 @@ export default class NewTask extends Component{
                                 <Rating
                                     big
                                     value={this.state.rating} 
-                                    type="circle"
+                                    type="star"
+                                    color="#232323"
                                     onChangeRating={(value) => {this.setState({ rating: value})}}
-                                        // activedStyle={{
-                                        //     backgroundColor: 'blue'
-                                        // }}
-                                        // disabledStyle={{
-                                        //     backgroundColor: 'red'
-                                        // }}
                                 />
                             </View>
                         </View>

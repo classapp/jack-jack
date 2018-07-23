@@ -1,6 +1,7 @@
 // EXTERNAL
 import React, { Component} from 'react';
-import { View, TouchableOpacity, StyleSheet, Text, Alert } from 'react-native';
+import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 // STYLES
 const styles = StyleSheet.create({
@@ -15,18 +16,6 @@ const styles = StyleSheet.create({
     big: {
         width: 40,
         height: 40,
-    },
-    dots: {
-        marginRight: 3,
-        flexDirection: 'column',
-        borderRadius: 100,
-    },
-    actived: {
-        backgroundColor: 'black'
-    },
-    disabled: {
-        borderWidth: 2,
-        borderColor: 'black'
     }
 });
 
@@ -50,25 +39,26 @@ export default class Rating extends Component {
     // LOAD CIRCLE TYPE RATING
     load_rating = (value) => {
         
-        // CHECKING TYPE 
-        if(this.props.type == 'circle'){
-            // MECHANICS VARIABLES
-            let result= [];
+        // MECHANICS VARIABLES
+        let result= [];
 
-            // MECHANICS
-            for(let i = 0; i < 5; i++){
-                result.push((value > 0 ? 1 : 0));
-                value--;
-            }
+        // MECHANICS
+        for(let i = 0; i < 5; i++){
+            result.push((value > 0 ? 1 : 0));
+            value--;
+        }
 
-            return result.map((value, i) => {
-                return (<TouchableOpacity
+        return result.map((value, i) => {
+            return (
+                <TouchableOpacity
                     key={i}
                     onPress={() => this.onChangeRating(i + 1)} 
-                    style={[styles.dots, styles.disabled, (this.props.small ? styles.small : undefined), (this.props.medium ? styles.medium : undefined), (this.props.big ? styles.big : undefined), value === 1 ? styles.actived : styles.disabled]}
-                    ></TouchableOpacity>);
-            });
-        }
+                    style={[ (this.props.small ? styles.small : undefined), (this.props.medium ? styles.medium : undefined), (this.props.big ? styles.big : undefined)]}
+                >
+                    <Icon name={this.props.type + (value === 1 ? "" : "-o")} style={{ color: this.props.color }} color="#000000" size={(this.props.small ? 20 : (this.props.medium ? 30 : (this.props.big ? 40 : undefined)))}/>
+                </TouchableOpacity>
+            );
+        });
     }
 
     render() {
