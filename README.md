@@ -2,7 +2,7 @@
 
 <img src="http://www.nishiweb.com.br/icomics/images/upload/368.jpg" alt="JACK-JACK" width="240" height="330">
 </br>
-<p>App created to teach people how work with React-Native. This step you will learn how use AsyncStorage in react-native applications for store our tasks.</p>
+<p>App created to teach people how work with React-Native. This step you will learn how use AsyncStorage in react-native applications.</p>
 
 ## CREATE PROJECT
 ```sh

@@ -56,6 +56,9 @@ export default class NewTask extends Component{
     
     constructor(props){
         super(props);
+        
+        this.onComplete = props.navigation.getParam('onComplete');
+
         this.state = { 
             title: "",
             text: "",
@@ -63,15 +66,17 @@ export default class NewTask extends Component{
         };        
     }
     
-     create_task = () => {
+     createTask = () => {
          
         // YOU CAN IMPLEMENTS VALIDATIONS
 
          Alert.alert("Confirmação", "Deseja realmente criar esta tarefa ?", [
             {text: "Sim", onPress: () => {
-                console.log('Creating new task...');
-                new MyStorage().add(this.state);
-                this.props.navigation.goBack();
+                new MyStorage().add(this.state).then((newData) => {
+                    console.log('Creating new task...');
+                    this.onComplete(newData);
+                    this.props.navigation.navigate('Main');
+                }); 
             }},
             {text: "Não", onPress: () => {
                 console.log('Canceling creation new task..');
@@ -80,14 +85,15 @@ export default class NewTask extends Component{
      }
 
     render() {
-    
+        const { navigation } = this.props;
+        console.log(navigation.getParam('onChange'));
         return (
             <View style={styles.container}>
                 <KeyboardAwareScrollView contentContainerStyle={{flex: 1}}>
                     <View style={styles.topBar}>
                         <Text style={{flex: 3, color: '#ff8724', ...styles.title}} onPress={() => this.props.navigation.goBack()}>Voltar</Text>
                         <Text style={{flex: 6, color: '#000000', ...styles.title}} >Nova Tarefa</Text>
-                        <Text style={{flex: 3, color: '#006bff', ...styles.title}} onPress={() => this.create_task()}>ADD</Text>
+                        <Text style={{flex: 3, color: '#006bff', ...styles.title}} onPress={() => this.createTask()}>ADD</Text>
                     </View>
                     <View style={styles.forms}>
                         <View style={{margin: 4}}>

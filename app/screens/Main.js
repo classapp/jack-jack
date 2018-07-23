@@ -52,6 +52,7 @@ export default class Main extends Component {
     this.state = {
       data: '',
     };
+
   }
 
   // BEFORE RENDER METHOD
@@ -60,15 +61,13 @@ export default class Main extends Component {
     this.setState({ data: storage });
   }
 
-  // WHEN COMPONENT UPDATES DATA
-  async componentWillUpdate() {
-    const storage = await new MyStorage().load();
-    this.setState({ data: storage });
+  // FUNCTION TO UPDATE PAGE
+  updatePage = (newData) => {
+    this.setState({ data: newData });
   }
-
   // FUNCTION TO CALL NEWTASK PAGE
-  new_task = () => {
-    this.props.navigation.navigate('NewTask');
+  newTask = () => {
+    this.props.navigation.navigate('NewTask', { onComplete: this.updatePage.bind(this)});
   }
 
   render() {
@@ -78,19 +77,20 @@ export default class Main extends Component {
           <Text style={{ flex: 6, ...styles.title }}>
             Minhas Tarefas
           </Text>
-          <Text style={{ flex: 1, ...styles.title }} onPress={this.new_task}>
+          <Text style={{ flex: 1, ...styles.title }} onPress={this.newTask}>
             +
           </Text>
         </View>
         <View style={styles.list}>
           <ScrollView>
-            <FlatList
-              ListEmptyComponent={(<View style={{ alignItems: 'center' }}>
-                <Text>Nenhuma tarefa para mostar.</Text>
-              </View>)}
-              data={this.state.data}
-              renderItem={({ item }) => <Task key={item.uid} data={item} navigation={this.props.navigation} />}
-            />
+              <FlatList
+                ListEmptyComponent={(<View style={{ alignItems: 'center' }}>
+                  <Text>Nenhuma tarefa para mostar.</Text>
+                </View>)}
+                data={this.state.data}
+                renderItem={({ item }) => <Task key={item.uid} onComplete={this.updatePage.bind(this)} data={item} navigation={this.props.navigation} />}
+              />
+       
           </ScrollView>
         </View>
       </View>

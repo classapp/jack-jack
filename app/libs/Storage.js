@@ -20,7 +20,10 @@ export default class MyStorage {
         }
 
         currentData.push(newData);
+        
         await AsyncStorage.setItem('storageTasks', JSON.stringify(currentData));
+
+        return currentData;
     }
     delete = async (uid) => {
 
@@ -33,6 +36,8 @@ export default class MyStorage {
         });
 
         await AsyncStorage.setItem('storageTasks', JSON.stringify(currentData));
+        
+        return currentData;
     }
     update = async (uid, data) => {
         // IF YOU WANT, YOU CAN IMPLEMENTS THE PAGE FOR UPDATE THE TASKs WITH THIS METHOD

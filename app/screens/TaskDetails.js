@@ -50,23 +50,29 @@ export default class TaskDetails extends Component{
      constructor(props){
         super(props);
 
+        this.onComplete = props.navigation.getParam('onComplete');
+
+        data = props.navigation.getParam('data');
+        
         this.state = {
-            uid: props.navigation.getParam('uid'),
-            title: props.navigation.getParam('title'),
-            text: props.navigation.getParam('text'),
-            rating: props.navigation.getParam('rating')
+            uid: data.uid,
+            title: data.title,
+            text: data.text,
+            rating: data.rating
          }
 
      }
 
-    delete_task = () => {
+    deleteTask = () => {
          Alert.alert("Confirmação", "Deseja realmente deletar esta tarefa ?", [
             {
                 text: "Sim", 
                 onPress: () => {
-                    console.log('Deleting task...');
-                    new MyStorage().delete(this.state.uid);
-                    this.props.navigation.goBack();
+                    new MyStorage().delete(this.state.uid).then((data) => {
+                        console.log('Deleting task...');
+                        this.onComplete(data);
+                        this.props.navigation.navigate('Main');
+                    });
                 }
             },
             {
@@ -83,7 +89,7 @@ export default class TaskDetails extends Component{
                 <View style={styles.topBar}>
                     <Text style={{flex: 3, color: '#ff8724', ...styles.title}} onPress={() => this.props.navigation.goBack()}>Voltar</Text>
                     <Text style={{flex: 6, color: '#000000', ...styles.title}} >{this.state.title}</Text>
-                    <Text style={{flex: 4, color: '#006bff', ...styles.title}} onPress={() => this.delete_task()}>DELETE</Text>
+                    <Text style={{flex: 4, color: '#006bff', ...styles.title}} onPress={() => this.deleteTask()}>DELETE</Text>
                 </View>
                 <View style={styles.desc}>
                     <ScrollView>

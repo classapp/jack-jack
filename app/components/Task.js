@@ -31,7 +31,7 @@ export default class Task extends Component {
     }
 
     open_task = () => {
-        this.props.navigation.navigate('TaskDetails', this.props.data);
+        this.props.navigation.navigate('TaskDetails', { data: this.props.data, onComplete: this.props.onComplete });
     }
 
     render() {
