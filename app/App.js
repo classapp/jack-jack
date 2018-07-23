@@ -5,13 +5,9 @@ import StackNavigation from './navigation/StackNavigation';
 
 // APP CONTEXT
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
-      <StackNavigation/>
+      <StackNavigation />
     );
   }
 }

@@ -52,7 +52,6 @@ export default class Main extends Component {
     this.state = {
       data: '',
     };
-
   }
 
   // BEFORE RENDER METHOD
@@ -65,9 +64,10 @@ export default class Main extends Component {
   updatePage = (newData) => {
     this.setState({ data: newData });
   }
+
   // FUNCTION TO CALL NEWTASK PAGE
   newTask = () => {
-    this.props.navigation.navigate('NewTask', { onComplete: this.updatePage.bind(this)});
+    this.props.navigation.navigate('NewTask', { onComplete: this.updatePage });
   }
 
   render() {
@@ -83,14 +83,18 @@ export default class Main extends Component {
         </View>
         <View style={styles.list}>
           <ScrollView>
-              <FlatList
-                ListEmptyComponent={(<View style={{ alignItems: 'center' }}>
-                  <Text>Nenhuma tarefa para mostar.</Text>
-                </View>)}
-                data={this.state.data}
-                renderItem={({ item }) => <Task key={item.uid} onComplete={this.updatePage.bind(this)} data={item} navigation={this.props.navigation} />}
-              />
-       
+            <FlatList
+              ListEmptyComponent={(
+                <View style={{ alignItems: 'center' }}>
+                  <Text>
+                    Nenhuma tarefa para mostar.
+                  </Text>
+                </View>
+              )}
+              data={this.state.data}
+              renderItem={({ item }) => <Task key={item.uid} onComplete={this.updatePage} data={item} navigation={this.props.navigation} />}
+            />
+
           </ScrollView>
         </View>
       </View>

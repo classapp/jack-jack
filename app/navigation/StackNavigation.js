@@ -7,10 +7,6 @@ import NewTask from '../screens/NewTask';
 import TaskDetails from '../screens/TaskDetails';
 
 export default class MainStackNavigation extends Component {
-  constructor(props) {
-    super(props);
-  }
-
     onChangePage = (c) => {
       console.log('The stack has been updated...\nCurrent stack state: ');
       console.log(c);
@@ -35,7 +31,7 @@ export default class MainStackNavigation extends Component {
 
     render() {
       console.log('Loading stack...');
-      const MainStackNavigation = this.createStackNavigator();
-      return <MainStackNavigation onNavigationStateChange={c => this.onChangePage(c)} />;
+      const MainStackNavigationConstructor = this.createStackNavigator();
+      return <MainStackNavigationConstructor onNavigationStateChange={c => this.onChangePage(c)} />;
     }
 }
