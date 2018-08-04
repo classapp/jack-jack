@@ -6,13 +6,13 @@ import {
   FlatList,
 } from 'react-native';
 
-import Task from './components/Task';
+import Task from '../components/Task';
 
 const styles = StyleSheet.create({
 
 });
 
-export default class App extends React.Component {
+export default class Main extends React.Component {
   state = {
     tasks: [
       { id: 1, title: 'Tarefa 1www', value: 3},
