@@ -30,9 +30,9 @@ export default class NewTask extends React.Component {
 
     const task = this.state;
 
-    await new MyStorage().add(task);
+    const savedTask = await new MyStorage().add(task);
 
-    updateTasks(task);
+    updateTasks(savedTask);
 
     this.props.navigation.goBack();
   }

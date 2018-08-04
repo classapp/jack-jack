@@ -24,7 +24,7 @@ export default class MyStorage {
 
     await AsyncStorage.setItem('storageTasks', JSON.stringify(currentData));
 
-    return currentData;
+    return newData;
   }
 
   destroy = async (id) => {
