@@ -27,11 +27,19 @@ export default class MyStorage {
     return currentData;
   }
 
-  destroy = () => {
+  destroy = async (id) => {
+    const currentData = await this.load();
 
+    currentData.forEach((element, index, array) => {
+      if (element.id === id) {
+        array.splice(index, 1);
+      }
+    });
+
+    await AsyncStorage.setItem('storageTasks', JSON.stringify(currentData));
   }
 
   update = () => {
-
+    // TODO
   }
 }
