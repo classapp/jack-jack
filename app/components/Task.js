@@ -5,14 +5,15 @@ import Rating from './Rating';
 
 export default class Task extends React.Component {
   render() {
-    const { index, title, desc, ratValue } = this.props;
+    const { index, task } = this.props;
 
     return (
       <View>
-        <Text>{title}</Text>
+        <Text>{task.title}</Text>
+        <Text>{task.description}</Text>
         <Rating
           taskIndex={index}
-          ratValue={ratValue}
+          ratValue={task.rating}
           onPressRating={(index, value) => this.props.onPressRating(index, value)} />
       </View>
     );
