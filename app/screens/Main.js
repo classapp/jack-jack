@@ -42,11 +42,18 @@ export default class Main extends React.Component {
           extraData={this.state}
           data={this.state.tasks}
           renderItem={({ item, index }) => (
-            <Task
-              index={index}
-              title={item.title} 
-              ratValue={item.value} 
-              onPressRating={this.onPressRating} />
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('TaskDetails', {
+                task: item
+              })}
+            >
+              <Task
+                index={index}
+                title={item.title} 
+                ratValue={item.value} 
+                onPressRating={this.onPressRating} />
+            </TouchableOpacity>
+
           )}
           keyExtractor={item => `${item.id}`}
         />
