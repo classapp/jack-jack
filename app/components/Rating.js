@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const styles = StyleSheet.create({
   circle: {
@@ -24,7 +25,8 @@ export default class Rating extends React.Component {
     return result.map((val, i) => {
       return (
         <TouchableOpacity onPress={() => this.props.onPressRating(this.props.taskIndex, i + 1)}>
-          <View style={[styles.circle, val === 1 && { backgroundColor: 'black' } ]} />
+          <Icon name={val === 1 ? "star" : "star-o"} />
+          {/* <View style={[styles.circle, val === 1 && { backgroundColor: 'black' } ]} /> */}
         </TouchableOpacity>
       )
     });
@@ -32,8 +34,7 @@ export default class Rating extends React.Component {
 
   render() {
     return (
-      <View>
-        <Text>{this.props.ratValue}</Text>
+      <View style={{ flexDirection: 'row' }}>
         {this.load_rating(this.props.ratValue)}
       </View>
     )

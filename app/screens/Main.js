@@ -47,13 +47,17 @@ export default class Main extends React.Component {
     return (
       <View>
         <Text style={{ fontSize: 30 }}>Minhas Tarefas</Text>
-        <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('NewTask', {
-            appendToTasks: this.appendToTasks
-          })}
-        >
-          <Text>Novo task</Text>
-        </TouchableOpacity>
+        <View style={{ flexDirection: 'row' }}>
+          <TouchableOpacity
+            style={{ padding: 10, backgroundColor: 'gray', borderRadius: 4 }}
+            onPress={() => this.props.navigation.navigate('NewTask', {
+              appendToTasks: this.appendToTasks
+            })}
+          >
+            <Text style={{ color: 'blue' }}>Novo task</Text>
+          </TouchableOpacity>
+        </View>
+
         <FlatList
           extraData={this.state}
           data={this.state.tasks}
