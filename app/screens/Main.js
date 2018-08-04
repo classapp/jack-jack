@@ -3,6 +3,7 @@ import {
   View,
   Text,
   StyleSheet,
+  TouchableOpacity,
   FlatList,
 } from 'react-native';
 
@@ -32,6 +33,11 @@ export default class Main extends React.Component {
     return (
       <View>
         <Text style={{ fontSize: 30 }}>Minhas Tarefas</Text>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('NewTask')}
+        >
+          <Text>Novo task</Text>
+        </TouchableOpacity>
         <FlatList
           extraData={this.state}
           data={this.state.tasks}
