@@ -37,6 +37,8 @@ export default class MyStorage {
     });
 
     await AsyncStorage.setItem('storageTasks', JSON.stringify(currentData));
+
+    return currentData;
   }
 
   update = () => {

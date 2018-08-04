@@ -26,13 +26,13 @@ export default class NewTask extends React.Component {
   }
 
   saveTask = async () => {
-    const updateTasks = this.props.navigation.getParam('updateTasks');
+    const appendToTasks = this.props.navigation.getParam('appendToTasks');
 
     const task = this.state;
 
     const savedTask = await new MyStorage().add(task);
 
-    updateTasks(savedTask);
+    appendToTasks(savedTask);
 
     this.props.navigation.goBack();
   }

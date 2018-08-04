@@ -32,10 +32,14 @@ export default class Main extends React.Component {
     this.setState({ tasks: tasks });
   }
 
-  updateTasks = (task) => {
+  appendToTasks = (task) => {
     const tasks = this.state.tasks;
     tasks.push(task);
 
+    this.setState({ tasks });
+  }
+
+  updateTasks = (tasks) => {
     this.setState({ tasks });
   }
 
@@ -45,7 +49,7 @@ export default class Main extends React.Component {
         <Text style={{ fontSize: 30 }}>Minhas Tarefas</Text>
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('NewTask', {
-            updateTasks: this.updateTasks
+            appendToTasks: this.appendToTasks
           })}
         >
           <Text>Novo task</Text>
@@ -56,7 +60,8 @@ export default class Main extends React.Component {
           renderItem={({ item, index }) => (
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('TaskDetails', {
-                task: item
+                task: item,
+                updateTasks: this.updateTasks
               })}
             >
               <Task
